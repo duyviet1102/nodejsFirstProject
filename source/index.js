@@ -10,6 +10,8 @@ const app = express() // tao app express
  //HTTP logger 
 app.use(morgan('combined'))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.urlencoded())
+app.use(express.json())
 // template engine
 app.engine('handlebars', handlerbars());
 app.set('view engine', 'handlebars');
@@ -17,14 +19,28 @@ app.set('views', path.join(__dirname, 'resources/views'))
 
 //routes 
 app.get('/', (req, res) => {
-  res.render('home')
+  res.render('home',
+    {
+       body: "<h1>Welcome to the Home Page</h1><p>This is dynamic content for the body.</p>"
+    }
+  )
 })
 app.get('/news', (req, res) => {
+  console.log(req.query.q); 
   res.render('news')
 })
 app.get('/mains', (req, res) => {
   res.render('layouts/main')
+});
+app.get('/search',(req,res) => 
+{
+  res.render('search')
 })
+app.post('/search',(req,res) => 
+  {
+    console.log(req.body)
+    res.render('search')
+  })
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
