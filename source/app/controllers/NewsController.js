@@ -1,9 +1,12 @@
-class NewsController 
-{
-     // [Get] / news 
-     index(req,res){
-        res.render('news')
-     }
-}
+class NewsController {
+    // [Get] / news
+                            index(req, res) {
+                                res.render('news');
+                            }
 
-export default NewsController  
+                            show(req, res) {
+                                res.send('NEWS DETAIL');
+                            }
+}   
+
+module.exports = new NewsController();

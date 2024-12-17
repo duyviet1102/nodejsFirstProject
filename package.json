@@ -1,34 +1,41 @@
 {
-  "name": "nodestart",
-  "version": "1.0.0",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "nodemon --inspect source/index.js",
-    "watch": "npx sass --watch source/resources/scss/app.scss source/public/css/app.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/duyviet1102/nodejsFirstProject.git"
-  },
-  "keywords": [
-    "blog",
-    "nodejs"
-  ],
-  "author": "viet",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/duyviet1102/nodejsFirstProject/issues"
-  },
-  "homepage": "https://github.com/duyviet1102/nodejsFirstProject#readme",
-  "description": "",
-  "dependencies": {
-    "express": "^4.21.2",
-    "express-handlebars": "^8.0.1"
-  },
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^3.1.7",
-    "sass": "^1.82.0"
-  }
+    "name": "nodestart",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "lint-staged": {
+        "source/**/*.{js,json,scss}": "prettier --write --single-quote --trailing-comma all"
+    },
+    "scripts": {
+        "prettier": "lint-staged",
+        "start": "nodemon --inspect source/index.js",
+        "watch": "npx sass --watch source/resources/scss/app.scss source/public/css/app.css",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/duyviet1102/nodejsFirstProject.git"
+    },
+    "keywords": [
+        "blog",
+        "nodejs"
+    ],
+    "author": "viet",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/duyviet1102/nodejsFirstProject/issues"
+    },
+    "homepage": "https://github.com/duyviet1102/nodejsFirstProject#readme",
+    "description": "",
+    "dependencies": {
+        "express": "^4.21.2",
+        "express-handlebars": "^8.0.1"
+    },
+    "devDependencies": {
+        "husky": "^9.1.7",
+        "lint-staged": "^15.2.11",
+        "morgan": "^1.10.0",
+        "nodemon": "^3.1.7",
+        "prettier": "^3.4.2",
+        "sass": "^1.82.0"
+    }
 }
