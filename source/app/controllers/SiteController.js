@@ -1,15 +1,16 @@
 const Course = require("../model/course");
-
+const { multipleMongooseToObj } = require("../../util/mongoose");
 class SiteController {
   // [Get] / news
-  async index(req, res) {
+  async index(req, res, next) {
     Course.find({})
       .then((courses) => {
-        res.json(courses); // Gửi dữ liệu khóa học dưới dạng JSON
+        courses = multipleMongooseToObj(courses);
+
+        res.render("home", { courses });
+        console.log(typeof multipleMongooseToObj); // Gửi dữ liệu khóa học dưới dạng JSON
       })
-      .catch((err) => {
-        res.status(400).json({ error: "Loi" + err });
-      });
+      .catch(next);
   }
 
   show(req, res) {

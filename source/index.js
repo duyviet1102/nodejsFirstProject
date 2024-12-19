@@ -8,7 +8,6 @@ var morgan = require("morgan");
 const handlerbars = require("express-handlebars").engine;
 const app = express(); // tao app express
 const db = require("./config/db");
-
 db();
 // app.use(express.static(path.join(_dirname,'public')))
 //HTTP logger
