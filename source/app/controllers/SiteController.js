@@ -6,7 +6,6 @@ class SiteController {
     Course.find({})
       .then((courses) => {
         courses = multipleMongooseToObj(courses);
-
         res.render("home", { courses });
         console.log(typeof multipleMongooseToObj); // Gửi dữ liệu khóa học dưới dạng JSON
       })
