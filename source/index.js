@@ -8,12 +8,14 @@ var morgan = require("morgan");
 const handlerbars = require("express-handlebars").engine;
 const app = express(); // tao app express
 const db = require("./config/db");
+//middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 db();
 // app.use(express.static(path.join(_dirname,'public')))
 //HTTP logger
 app.use(morgan("combined")); // log
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded()); // ma hoa url
 app.use(express.json());
 // template engine
 app.engine("handlebars", handlerbars());
