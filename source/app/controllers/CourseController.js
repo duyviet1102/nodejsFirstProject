@@ -1,3 +1,7 @@
+const {
+  mongooseToObject,
+  multipleMongooseToObj,
+} = require("../../util/mongoose");
 const Course = require("../model/course");
 class CourseController {
   // [Get] / courses / html
@@ -23,6 +27,19 @@ class CourseController {
       .save()
       .then(() => res.redirect("/"))
       .catch((error) => {});
+  }
+  edit(req, res, next) {
+    Course.findById(req.params.id)
+      .then((course) =>
+        res.render("course/edit", { course: course.toObject() }),
+      )
+      .catch(next);
+  }
+  // put / course/ id
+  update(req, res, next) {
+    Course.updateOne({ _id: req.params.id }, req.body)
+      .then(() => res.redirect("/info"))
+      .catch(next);
   }
 }
 

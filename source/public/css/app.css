@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .card-course-item {
   margin-top: 16px;
 }
@@ -7,6 +8,12 @@
   height: 28px;
   border-radius: 50%;
   margin-right: 4px;
+}
+
+.body-content {
+  margin: 20px auto; /* Thêm khoảng cách trên, dưới và căn ngang giữa */
+  width: 80%; /* Độ rộng của phần tử */
+  text-align: justify; /* Căn lề đều nội dung */
 }
 
 /*# sourceMappingURL=app.css.map */

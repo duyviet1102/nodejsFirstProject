@@ -10,3 +10,9 @@
   border-radius: 50%;
   margin-right: 4px;
 }
+
+.body-content {
+  margin: 20px auto; /* Thêm khoảng cách trên, dưới và căn ngang giữa */
+  width: 80%; /* Độ rộng của phần tử */
+  text-align: justify; /* Căn lề đều nội dung */
+}

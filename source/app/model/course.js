@@ -33,6 +33,10 @@ const Course = new Schema(
       type: Date,
       default: Date.now,
     },
+    level: {
+      type: String,
+      maxlength: 225,
+    },
   },
   {
     timestamps: true,
