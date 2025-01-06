@@ -18,9 +18,6 @@ const Course = new Schema(
       type: String,
       maxlength: 255,
     },
-    album: {
-      type: String,
-    },
     videoId: {
       type: String,
     },
@@ -32,6 +29,10 @@ const Course = new Schema(
     createAt: {
       type: Date,
       default: Date.now,
+    },
+    level: {
+      type: String,
+      maxlength: 225,
     },
   },
   {
