@@ -7,9 +7,7 @@ class CourseController {
   // [Get] / courses / html
   show(req, res, next) {
     Course.findOne({ slug: req.params.slug })
-      .then((course) =>
-        res.render("course/show", { course: course.toObject() }),
-      )
+      .then((course) => res.render("course/show", { course: course }))
       .catch(next);
   }
 
