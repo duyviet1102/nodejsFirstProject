@@ -18,9 +18,6 @@ const Course = new Schema(
       type: String,
       maxlength: 255,
     },
-    album: {
-      type: String,
-    },
     videoId: {
       type: String,
     },

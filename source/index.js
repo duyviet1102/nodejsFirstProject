@@ -14,6 +14,7 @@ const db = require("./config/db");
 //   return a + b;
 // });
 //middleware
+app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 db();
@@ -22,7 +23,7 @@ db();
 app.use(morgan("combined")); // log
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
-app.use(methodOverride("X-HTTP-Method-Override"));
+
 // template engine
 app.engine(
   "handlebars",

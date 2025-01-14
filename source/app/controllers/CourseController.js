@@ -7,7 +7,12 @@ class CourseController {
   // [Get] / courses / html
   show(req, res, next) {
     Course.findOne({ slug: req.params.slug })
-      .then((course) => res.render("course/show", { course: course }))
+      .then((course) => {
+        // if (!course) {
+        //   return res.status(404).send("Course not found");
+        // }
+        res.render("course/show", { course: course.toObject() });
+      })
       .catch(next);
   }
 
@@ -35,6 +40,8 @@ class CourseController {
   }
   // put / course/ id
   update(req, res, next) {
+    // const formData = req.body;
+    // formData.image`https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
     Course.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.redirect("/info"))
       .catch(next);
