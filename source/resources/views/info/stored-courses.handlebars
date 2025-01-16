@@ -26,7 +26,12 @@
               class="btn btn-warning"
               data-toggle="modal"
               data-target="#delete-receipt-modal"
-              data-id="{{this._id}}"
+              data-bs-id="{{this._id}}"
+              {{!-- type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#delete-course-modal"
+              data-bs-whatever="{{this._id}}" --}}
             >Delete</a>
           </td>
         </tr>
@@ -60,7 +65,7 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <h5>ban co muon xoa ? </h5>
       </div>
       <div class="modal-footer">
         <button
@@ -68,27 +73,26 @@
           class="btn btn-secondary"
           data-dismiss="modal"
         >Close</button>
-        <button type="button" class="btn btn-primary">Delete</button>
+        <button
+          type="button"
+          id="btn-delete-receipt"
+          class="btn btn-danger"
+        >Delete</button>
       </div>
     </div>
   </div>
 </div>
 
-{{! <script>
- let btn = document.querySelector('.btn-dark')
- let courseId = btn.getAttribute("data-bs-whatever")
- let deleteBtn = document.querySelector('.btn-danger')
- let deleteForm = document.forms["delete-form"]
- console.log(deleteForm)
- deleteBtn.addEventListener('click',function(){
-  deleteForm.action = `/course/${courseId}?_method=DELETE`
-  deleteForm.submit()
-  console.log(courseId)
- })
-</script> }}
-
 <script>
-  document.addEventListener('DOMContentLoaded', function(){
-  $('#delete-receipt-modal').on('show.bs.modal', function (event) { var button =
-  $(event.relatedTarget); var id = button.data('id'); console.log(id) }) })
+  document.addEventListener('DOMContentLoaded', function(){ 
+    var courseId;
+    $('#delete-receipt-modal').on('shown.bs.modal', function (event) { 
+      var button = $(event.relatedTarget); 
+      courseId = button.data('id');
+      console.log(id)}) ;
+       var btnDeletereceipt = document.getElementById('btn-delete-receipt'); 
+      console.log(btnDeletereceipt);
+      btnDeletereceipt.onclick = function(){ alert(courseId); }
+      }); 
+ 
 </script>
