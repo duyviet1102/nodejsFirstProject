@@ -26,7 +26,7 @@
               class="btn btn-warning"
               data-toggle="modal"
               data-target="#delete-receipt-modal"
-              data-bs-id="{{this._id}}"
+              data-id="{{this._id}}"
               {{!-- type="button"
               class="btn btn-primary"
               data-bs-toggle="modal"
@@ -44,17 +44,17 @@
 
 <!-- Modal -->
 <div
-  class="modal fade"
+  class="modal"
   id="delete-receipt-modal"
   tabindex="-1"
   role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
+  {{!-- aria-labelledby="exampleModalLabel" --}}
+  {{!-- aria-hidden="true" --}}
 >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Do u want to delete</h5>
+        <h5 class="modal-title" >Do u want to delete</h5>
         <button
           type="button"
           class="close close position-absolute top-0 end-0"
@@ -83,16 +83,27 @@
   </div>
 </div>
 
+ {{!-- delete hidden form  --}}
+
+ <form class="mt-4" method="POST" name="delete-receipt-form">
+ </form>
+
+
 <script>
   document.addEventListener('DOMContentLoaded', function(){ 
     var courseId;
-    $('#delete-receipt-modal').on('shown.bs.modal', function (event) { 
+    var deleteForm = document.forms['delete-receipt-form'];
+    var btnDeletereceipt = document.getElementById('btn-delete-receipt'); 
+    $('#delete-receipt-modal').on('show.bs.modal', function (event) { 
       var button = $(event.relatedTarget); 
       courseId = button.data('id');
-      console.log(id)}) ;
-       var btnDeletereceipt = document.getElementById('btn-delete-receipt'); 
+      console.log(courseId)}) ;
       console.log(btnDeletereceipt);
-      btnDeletereceipt.onclick = function(){ alert(courseId); }
+      btnDeletereceipt.onclick = function(){ 
+        alert(courseId); 
+        deleteForm.action = '/course/' + courseId + '?_method=DELETE'
+        deleteForm.submit();
+        }
       }); 
  
 </script>
