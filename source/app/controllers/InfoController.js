@@ -3,7 +3,7 @@ const { multipleMongooseToObj } = require("../../util/mongoose");
 class InfoController {
   // [Get] / info
   stored(req, res) {
-    Course.find({}).then((course) =>
+    Course.find({}).then((course) => // neu delete ton tai tuc la da xoa vinh vien , dang ap dung soft delete 
       res.render("info/stored-courses", {
         course: multipleMongooseToObj(course),
       }),
