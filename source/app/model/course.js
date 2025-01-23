@@ -48,5 +48,7 @@ const Course = new Schema(
 //   next();
 // });
 mongoose.plugin(slug); 
-Course.plugin(mongoose_delete); 
+Course.plugin(mongoose_delete, { 
+  deletedAt: true , 
+  overrideMethods: 'all' }); 
 module.exports = mongoose.model("Course", Course);
