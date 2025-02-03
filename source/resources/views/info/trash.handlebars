@@ -23,7 +23,7 @@
             <a
               href="/course/{{this._id}}/edit"
               class="btn btn-danger"
-            >Update</a>
+            >Recovery</a>
             <a
               href=""
               class="btn btn-warning"
@@ -35,12 +35,14 @@
               data-bs-toggle="modal"
               data-bs-target="#delete-course-modal"
               data-bs-whatever="{{this._id}}" --}}
-            >Delete</a>
+            >Forever Delete</a>
           </td>
         </tr>
         {{else}}
          <tr>
-            <td colspan="5" class="text-centen">No data!</td>
+            <td colspan="5" class="text-centen">No data!
+              <a href="/course/create">Tạo hóa đơn</a>
+            </td>
          </tr>
       {{/each}}
     </tbody>

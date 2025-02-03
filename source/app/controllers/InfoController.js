@@ -11,8 +11,8 @@ class InfoController {
   }
      // /info/trash
   trash(req, res , next){
-    Course.find({}).then((course) => // neu delete ton tai tuc la da xoa vinh vien , dang ap dung soft delete 
-    res.render("info/stored-courses", {
+    Course.findDeleted({}).then((course) => // neu delete ton tai tuc la da xoa vinh vien , dang ap dung soft delete 
+    res.render("info/trash", {
       course: multipleMongooseToObj(course),
     }),
   );
