@@ -7,6 +7,7 @@ router.get("/:id/edit", courseController.edit);
 router.get("/create", courseController.create);
 router.post("/store", courseController.store);
 router.delete("/:id", courseController.destroy);
+router.delete("/:id/force", courseController.forceDestroy);
 router.patch("/:id/restore", courseController.restore);
 router.put("/:id", courseController.update);// sua
 router.use("/:slug", courseController.show);

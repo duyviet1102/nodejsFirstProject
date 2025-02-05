@@ -108,12 +108,15 @@
       courseId = button.data('id');
       console.log(courseId)}) ;
       console.log(btnDeletereceipt);
+      // delete force 
       btnDeletereceipt.onclick = function(){ 
         alert(courseId); 
-        deleteForm.action = '/course/' + courseId + '?_method=DELETE'
+        deleteForm.action = '/course/' + courseId + '/force?_method=DELETE'
         deleteForm.submit();
         }
+      
 
+      //recovery
       restoreBtn.click(function (e){
         e.preventDefault() ; 
         var courseId = $(this).data('id');

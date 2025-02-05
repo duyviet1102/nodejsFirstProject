@@ -23,12 +23,12 @@ class CourseController {
   //post / course / store
   store(req, res, next) {
     // res.json(req.body); // res.render("course/store");
-    const formData = req.body;
-    formData.image = `${req.body.image}`;
+   
+    req.body.image = `${req.body.image}`;
     const course = new Course(req.body);
     course
       .save()
-      .then(() => res.redirect("/"))
+      .then(() => res.redirect("/info"))
       .catch((error) => {});
   }
   edit(req, res, next) {
@@ -50,6 +50,12 @@ class CourseController {
     Course.delete({ _id: req.params.id })
       .then(() => res.redirect("back"))
       .catch(next);
+  }
+  // course / :id / force destroy 
+  forceDestroy(req , res , next){
+     Course.deleteOne({_id: req.params.id})
+     .then(() => res.redirect('back'))
+     .catch(next); 
   }
 
    // patch / course /:id/ restore
