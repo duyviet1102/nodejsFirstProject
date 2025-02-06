@@ -2,12 +2,13 @@ const Course = require("../model/course");
 const { multipleMongooseToObj } = require("../../util/mongoose");
 class InfoController {
   // [Get] / info
-  stored(req, res) {
-    Course.find({}).then((course) => // neu delete ton tai tuc la da xoa vinh vien , dang ap dung soft delete 
+  stored(req, res,next) {
+    Promise.all([Course.find({}), Course.countDocumentsWithDeleted({})]).then(([course,deletedCount])=> 
       res.render("info/stored-courses", {
+        deletedCount: deletedCount, 
         course: multipleMongooseToObj(course),
-      }),
-    );
+      })
+    ).catch(next);
   }
      // /info/trash
   trash(req, res , next){
@@ -18,5 +19,6 @@ class InfoController {
   );
   }
 }
+
 
 module.exports = new InfoController();
